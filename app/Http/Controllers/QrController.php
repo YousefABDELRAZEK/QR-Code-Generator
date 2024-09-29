@@ -21,7 +21,10 @@ class QrController extends Controller
     }
     public function generate(Request $request){
 
-          if (!preg_match('/^http(s)?:\/\//', $url)) {
+           $url = $request->input('url');
+    
+    // Prepend https:// if the user hasn't provided a scheme
+    if (!preg_match('/^http(s)?:\/\//', $url)) {
         $url = 'https://' . $url;
     }
         $text = $request->input('text', 'Your default text or URL here');
