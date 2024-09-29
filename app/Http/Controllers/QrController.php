@@ -21,6 +21,9 @@ class QrController extends Controller
     }
     public function generate(Request $request){
 
+          if (!preg_match('/^http(s)?:\/\//', $url)) {
+        $url = 'https://' . $url;
+    }
         $text = $request->input('text', 'Your default text or URL here');
         if($text){
             $qrCode = QrCode::size(300)->generate($text);
