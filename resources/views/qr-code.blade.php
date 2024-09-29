@@ -419,7 +419,7 @@ input[type="text"]{
 <h2>QR Code Generator</h2><br>
 <h4>Paste a url or enter text to create QR code</h4>
 <div class="container">
-    <form method="POST" action="{{route('qr-code.index')}}">
+<form method="POST" action="{{ secure_url(route('qr-code.index')) }}">
         @csrf
       
     <input type="text" name="text" placeholder="Enter text or url.." value="{{ request('text') }}"/><br>
